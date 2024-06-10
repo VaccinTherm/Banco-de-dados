@@ -4,8 +4,7 @@ USE vaccinTherm;
 CREATE TABLE Empresa (
 idEmpresa INT PRIMARY KEY AUTO_INCREMENT,
 nome VARCHAR(45) NOT NULL,
-cnpj char(14) NOT NULL,
-mensagem VARCHAR(300)
+cnpj char(14) NOT NULL
 );
 
 CREATE TABLE Usuario (
@@ -16,6 +15,14 @@ senha VARCHAR(45) NOT NULL,
 telefone CHAR(9),
 fkEmpresa INT,
 CONSTRAINT fkempresaUsuario FOREIGN KEY (fkEmpresa) REFERENCES EMPRESA(idEmpresa)
+);
+
+CREATE TABLE Mensagem (
+idMensagem INT PRIMARY KEY AUTO_INCREMENT,
+nome VARCHAR(45) NOT NULL,
+email VARCHAR(45) NOT NULL,
+telefone CHAR(9) NOT NULL,
+mensagem VARCHAR(300) NOT NULL
 );
 
 CREATE TABLE Sensor (
@@ -39,7 +46,7 @@ umidadeMinimaSuportada INT
 CREATE TABLE Veiculo (
 idVeiculo INT NOT NULL,
 dataEntrega date NOT NULL,
-CONSTRAINT pkComposta PRIMARY KEY (idVeiculo, data_entrega),
+CONSTRAINT pkComposta PRIMARY KEY (idVeiculo, dataEntrega),
 placa VARCHAR(45) NOT NULL,
 modeloVeiculo VARCHAR(45),
 responsavel VARCHAR(45) NOT NULL,
@@ -58,7 +65,7 @@ dht11Umidade DECIMAL (4,2),
 dht11Temperatura DECIMAL (4,2),
 fkSensorRegistro INT,
 CONSTRAINT sensorRegistro FOREIGN KEY (fkSensorRegistro) REFERENCES SENSOR(idSensor),
-fkVacina_registro INT,
+fkVacinaRegistro INT,
 CONSTRAINT vacinaRegistro FOREIGN KEY (fkVacinaRegistro) REFERENCES Vacina(idVacina),
 fkUsuarioRepresentante INT,
 CONSTRAINT usuarioRepresentante FOREIGN KEY (fkUsuarioRepresentante) REFERENCES USUARIO (idUsuario)
