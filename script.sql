@@ -78,27 +78,14 @@ dataEntrega DATE,
 CONSTRAINT veiculoRegistro FOREIGN KEY (fkVeiculoRegistro, dataEntrega) REFERENCES Veiculo(idVeiculo, dataEntrega)
 );
 
-
-INSERT INTO Registro (dataHora, dht11Umidade, dht11Temperatura, fkSensorRegistro, fkVacinaRegistro, fkUsuarioRepresentante, fkVeiculoRegistro, dataEntrega)
-VALUES ('2024-07-10 10:01:00', 24.0, 18.0, 1, 1, 4, 1, '2024-06-15'),
-('2024-07-10 10:02:00', 22.5, 17.5, 1, 1, 4, 1, '2024-06-15'),
-('2024-07-10 10:03:00', 23.5, 18.5, 1, 1, 4, 1, '2024-06-15'),
-('2024-07-10 10:04:00', 25.0, 19.0, 1, 1, 4, 1, '2024-06-15'),
-('2024-07-10 10:05:00', 21.0, 17.0, 1, 1, 4, 1, '2024-06-15'),
-('2024-07-10 10:06:00', 22.0, 16.5, 1, 1, 4, 1, '2024-06-15'),
-('2024-07-10 10:07:00', 24.5, 18.2, 1, 1, 4, 1, '2024-06-15'),
-('2024-07-10 10:08:00', 23.0, 17.8, 1, 1, 4, 1, '2024-06-15'),
-('2024-07-10 10:09:00', 20.5, 16.0, 1, 1, 4, 1, '2024-06-15'),
-('2024-07-10 10:22:00', 23.5, 18.5, 1, 1, 4, 4, '2024-06-16'),
-('2024-07-10 10:32:00', 25.0, 19.0, 1, 1, 4, 4, '2024-06-16'),
-('2024-07-10 10:42:00', 21.0, 17.0, 1, 1, 4, 4, '2024-06-16'),
-('2024-07-10 10:52:00', 24.5, 18.2, 1, 1, 4, 4, '2024-06-16'),
-('2024-07-10 11:12:00', 20.5, 16.0, 1, 1, 4, 4, '2024-06-16'),
-('2024-07-10 11:02:00', 23.0, 17.8, 1, 1, 4, 4, '2024-06-16'),
-('2024-07-10 11:22:00', 26.0, 19.5, 1, 1, 4, 4, '2024-06-16'),
-('2024-07-10 11:42:00', 23.5, 18.5, 1, 1, 4, 4, '2024-06-16'),
-('2024-07-10 11:32:00', 22.0, 17.0, 1, 1, 4, 4, '2024-06-16'),
-('2024-07-10 10:10:00', 26.0, 19.5, 1, 1, 4, 1, '2024-06-15');
+CREATE TABLE Avisos (
+idAlerta INT,
+ideal VARCHAR(45),
+alerta VARCHAR(45),
+emergencia VARCHAR(45),
+fkRegistro INT,
+CONSTRAINT registoAvisos FOREIGN KEY (fkRegistro) REFERENCES Registro (idRegistro)
+);
 
  
 INSERT INTO Empresa (nome, cnpj) VALUES
@@ -149,6 +136,27 @@ INSERT INTO Registro (idRegistro, dataHora, dht11Umidade, dht11Temperatura, fkSe
 (4, '2024-06-13 17:45:00', 40.80, 21.60, 2, 1, 1),
 (5, '2024-06-14 18:30:00', 48.90, 22.10, 2, 2, 2);
  
+ 
+ INSERT INTO Registro (dataHora, dht11Umidade, dht11Temperatura, fkSensorRegistro, fkVacinaRegistro, fkUsuarioRepresentante, fkVeiculoRegistro, dataEntrega)
+VALUES ('2024-07-10 10:01:00', 24.0, 18.0, 1, 1, 1, 1, '2024-06-15'),
+('2024-07-10 10:02:00', 22.5, 17.5, 1, 1, 1, 1, '2024-06-15'),
+('2024-07-10 10:03:00', 23.5, 18.5, 1, 1, 1, 1, '2024-06-15'),
+('2024-07-10 10:04:00', 25.0, 19.0, 1, 1, 1, 1, '2024-06-15'),
+('2024-07-10 10:05:00', 21.0, 17.0, 1, 1, 1, 1, '2024-06-15'),
+('2024-07-10 10:06:00', 22.0, 16.5, 1, 1, 1, 1, '2024-06-15'),
+('2024-07-10 10:07:00', 24.5, 18.2, 1, 1, 1, 1, '2024-06-15'),
+('2024-07-10 10:08:00', 23.0, 17.8, 1, 1, 1, 1, '2024-06-15'),
+('2024-07-10 10:09:00', 20.5, 16.0, 1, 1, 1, 1, '2024-06-15'),
+('2024-07-10 10:22:00', 23.5, 18.5, 1, 1, 1, 4, '2024-06-16'),
+('2024-07-10 10:32:00', 25.0, 19.0, 1, 1, 1, 4, '2024-06-16'),
+('2024-07-10 10:42:00', 21.0, 17.0, 1, 1, 1, 4, '2024-06-16'),
+('2024-07-10 10:52:00', 24.5, 18.2, 1, 1, 1, 4, '2024-06-16'),
+('2024-07-10 11:12:00', 20.5, 16.0, 1, 1, 1, 4, '2024-06-16'),
+('2024-07-10 11:02:00', 23.0, 17.8, 1, 1, 1, 4, '2024-06-16'),
+('2024-07-10 11:22:00', 26.0, 19.5, 1, 1, 1, 4, '2024-06-16'),
+('2024-07-10 11:42:00', 23.5, 18.5, 1, 1, 1, 4, '2024-06-16'),
+('2024-07-10 11:32:00', 22.0, 17.0, 1, 1, 1, 4, '2024-06-16'),
+('2024-07-10 10:10:00', 26.0, 19.5, 1, 1, 1, 1, '2024-06-15');
 
 SELECT * FROM Empresa;
 SELECT * FROM Usuario;
@@ -164,3 +172,12 @@ AS idEmpresa, Registro.dht11Umidade, Registro.dht11Temperatura, DATE_FORMAT(data
 AS dataHora, Registro.fkVeiculoRegistro
 FROM Registro JOIN Usuario ON Registro.fkUsuarioRepresentante = Usuario.idUsuario
 WHERE Usuario.fkEmpresa = 1 AND Registro.fkVeiculoRegistro = 1 ORDER BY idRegistro DESC LIMIT 10;
+
+-- ADICIONANDO O CAMPO DE STATUS NO REGISTRO
+ALTER TABLE Registro ADD COLUMN status VARCHAR(45);
+ALTER TABLE Registro ADD CONSTRAINT alertaStatus CHECK (status in ('Alerta', 'Emergência', 'Ideal'));
+
+SELECT * FROM Registro;
+
+UPDATE Registro SET status = 'Emergência' WHERE idRegistro in (1,2,3,4,5);
+
