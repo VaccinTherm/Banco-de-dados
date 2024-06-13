@@ -10,9 +10,9 @@ cnpj char(14) NOT NULL
 CREATE TABLE Usuario (
 idUsuario INT PRIMARY KEY AUTO_INCREMENT,
 nome VARCHAR(45) NOT NULL,
-email VARCHAR(45) NOT NULL,
+email VARCHAR(255) NOT NULL,
 senha VARCHAR(45) NOT NULL,
-telefone CHAR(9),
+telefone CHAR(11),
 fkEmpresa INT,
 CONSTRAINT fkempresaUsuario FOREIGN KEY (fkEmpresa) REFERENCES Empresa(idEmpresa)
 );
